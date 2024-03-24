@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fidelización</title>
+</head>
+<body>
+    <h1>Fidelización de personal</h1>
+
+    <h2>Puntos acumulados por usuario:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Total de puntos acumulados</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in fidelizacion_info %}
+            <tr>
+                <td>{{ usuario[1] }}</td>
+                <td>{{ usuario[2] }}</td>
+                <td>{{ usuario[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Actividades recientes:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre de la actividad</th>
+                <th>Fecha de la actividad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for actividad in actividades_recientes %}
+            <tr>
+                <td>{{ actividad[0] }}</td>
+                <td>{{ actividad[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

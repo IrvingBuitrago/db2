@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfiles</title>
+</head>
+<body>
+    <h1>Perfiles</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha de vigencia</th>
+                <th>Descripción</th>
+                <th>Encargado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for perfil in perfiles %}
+            <tr>
+                <td>{{ perfil[0] }}</td>
+                <td>{{ perfil[1] }}</td>
+                <td>{{ perfil[2] }}</td>
+                <td>{{ perfil[3] }}</td>
+                <td>{{ perfil[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
