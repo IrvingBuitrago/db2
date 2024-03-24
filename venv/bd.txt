@@ -1,0 +1,66 @@
+# -- Creacion de BD
+# CREATE DATABASE xyz;
+#
+# USE xyz;
+#
+# -- Creacion de tablas
+# CREATE TABLE Profils (
+# 	id INT AUTO_INCREMENT PRIMARY KEY,
+#    name_prfl VARCHAR(50),
+#    effective_date DATETIME,
+#    descriptin TEXT,
+#    in_charge VARCHAR(70)
+#    );
+#
+# CREATE TABLE Users (
+# 	id INT AUTO_INCREMENT PRIMARY KEY,
+#    first_name VARCHAR(70),
+#    last_name VARCHAR(70),
+#    statvs BOOLEAN,
+#    passwrd VARCHAR(100),
+#    job_title VARCHAR(70),
+#    salary DOUBLE,
+#    date_entry DATETIME,
+#    id_prfl INT,
+#    FOREIGN KEY (id_prfl) REFERENCES Profils(id)
+#    );
+#
+# CREATE TABLE Logins (
+# 	id INT AUTO_INCREMENT PRIMARY KEY,
+# 	date_login DATETIME,
+# 	id_users INT,
+# 	FOREIGN KEY (id_users) REFERENCES Users(id)
+# 	);
+#
+# CREATE TABLE Activities (
+# 	id INT AUTO_INCREMENT PRIMARY KEY,
+# 	name_act VARCHAR(100),
+# 	date_act DATETIME
+# 	);
+#
+# CREATE TABLE Shares (
+# 	id INT AUTO_INCREMENT PRIMARY KEY,
+# 	id_users INT,
+# 	id_actvs INT,
+# 	accmltd_points INT,
+# 	FOREIGN KEY (id_users) REFERENCES Users(id),
+# 	FOREIGN KEY (id_actvs) REFERENCES Activities(id)
+# 	);
+#
+# -- Creacion de vista sobre los puntos acumulados
+# CREATE VIEW AccumlatedPoints AS
+# SELECT Users.id AS id_users, Users.first_name, Users.last_name, SUM(Shares.accmltd_points) AS Total_points
+# FROM Users
+# JOIN Shares ON Users.id = Shares.id_users
+# GROUP BY Users.id;
+#
+# -- Creacion de un procedimiento de almacenamiento para insertar un nuevo registro de actividad
+# DELIMITER //
+# CREATE PROCEDURE Insert_Activity (
+# 	IN name_act VARCHAR(100),
+# 	IN date_act DATE
+# 	)
+# BEGIN
+# 	INSERT INTO Activity (name_act, date_act) VALUES (name_act, date_act);
+# END //
+# DELIMITER ;
